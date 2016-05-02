@@ -1,5 +1,5 @@
 # An example OpenReadController
-class AnswersController < OpenReadController
+class AnswersController < ProtectedController
   before_action :set_answer, only: [:update, :destroy]
 
   # GET /answer

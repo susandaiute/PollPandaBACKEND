@@ -1,6 +1,6 @@
 # An example OpenReadController
-class QuestonsController < OpenReadController
-  before_action :set_question
+class QuestionsController < ProtectedController
+  before_action :set_question, only: [:show, :update, :destroy]
 
   # GET /answer
   # GET /answer.json
