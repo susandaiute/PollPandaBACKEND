@@ -1,0 +1,14 @@
+<% project_name = 'PollPanda' %>
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: PollPanda_development
+
+test:
+  <<: *default
+  database: PollPanda_test
