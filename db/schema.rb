@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160428234548) do
+ActiveRecord::Schema.define(version: 20160502153114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +26,17 @@ ActiveRecord::Schema.define(version: 20160428234548) do
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
-    t.text     "text",       null: false
+    t.string   "title",      null: false
+    t.string   "answer1",    null: false
+    t.string   "answer2",    null: false
+    t.string   "answer3",    null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "creator_id"
   end
 
+  add_index "questions", ["creator_id"], name: "index_questions_on_creator_id", using: :btree
   add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -47,4 +52,5 @@ ActiveRecord::Schema.define(version: 20160428234548) do
 
   add_foreign_key "examples", "users"
   add_foreign_key "questions", "users"
+  add_foreign_key "questions", "users", column: "creator_id"
 end

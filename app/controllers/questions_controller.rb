@@ -5,7 +5,7 @@ class QuestionsController < ProtectedController
   # GET /answer
   # GET /answer.json
   def index
-    @question = Question.all
+    @questions = Question.all
 
     render json: @questions
   end
@@ -51,6 +51,6 @@ class QuestionsController < ProtectedController
   end
 
   def question_params
-    params.require(:question).permit(:text)
+    params.require(:question).permit(:title, :answer1, :answer2, :answer3)
   end
 end
