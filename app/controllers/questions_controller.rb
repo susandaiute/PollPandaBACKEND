@@ -1,7 +1,6 @@
 # An example OpenReadController
 class QuestionsController < ProtectedController
   before_action :set_question, only: [:show, :update, :destroy]
-  before_action :set_question2, only: [:destroy_all]
 
   # GET /question
   # GET /question.json
@@ -47,17 +46,8 @@ class QuestionsController < ProtectedController
     head :no_content
   end
 
-  def destroy_all
-    @question.destroy
-    head :no_content
-  end
-
   def set_question
     @question = current_user.questions.find(params[:id])
-  end
-
-  def set_question2
-    @question = current_user.questions
   end
 
   def question_params

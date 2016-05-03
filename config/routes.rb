@@ -7,5 +7,4 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :questions
   post '/questions' => 'questions#submitquestion'
-  delete '/questions' => 'questions#destroy'
 end
